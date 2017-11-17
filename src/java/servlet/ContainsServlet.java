@@ -64,22 +64,8 @@ public class ContainsServlet extends HttpServlet {
 "        <div class = \"mdl-layout__header-row\">\n" +
 "            <!-- Title -->\n" +
 "            <span class = \"mdl-layout-title\">Welcome to AAVA Music Studios</span>\n" +
-"        </div>\n" +
-"\n" +
-"        <!-- Tabs -->\n" +
-"        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Album</a>\n"+ 
-"            <a href = \"labels\" class = \"mdl-layout__tab\">Labels</a>\n"+ 
-"            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
-"            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
-"            <a href = \"music-director\" class = \"mdl-layout__tab\">Music Director</a>\n"+ 
-"            <a href = \"author\" class = \"mdl-layout__tab\">Author</a>\n"+
-"        </div>\n" +
-"    </header>\n" +
-"\n" +
-"    <main class = \"mdl-layout__content\">\n" +
-"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
-"            <div class = \"page-content\">");
+"        </div></header>\n" +
+"\n");
             ArrayList<Contains> contains = MusicHandler.getContains(new DataConnection().getConnection() , request.getParameter("id"));
             out.println("<center><table border=\"1\">"
                     + "<tr><td>Album Name</td><td>Song Name</td></tr>");

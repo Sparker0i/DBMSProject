@@ -5,25 +5,27 @@
  */
 package servlet;
 
-import address.AddressHandler;
-import address.City;
+import connection.DataConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import connection.*;
-import java.util.*;
+import music.Album;
+import music.MusicHandler;
+import person.MusicDirector;
+import person.PersonHandler;
 
 /**
  *
  * @author Spark
  */
-@WebServlet(name = "city", urlPatterns = {"/city"})
-public class CityServlet extends HttpServlet {
+@WebServlet(name = "music-director", urlPatterns = {"/music-director-servlet"})
+public class MusicDirectorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,11 +73,7 @@ public class CityServlet extends HttpServlet {
 "\n" +
 "        <!-- Tabs -->\n" +
 "        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"#scroll-tab-1\" class = \"mdl-layout__tab is-active\">City</a>\n" +
-"            <a href = \"zip\" class = \"mdl-layout__tab\">Zipcode</a>\n" +
-"            <a href = \"person\" class = \"mdl-layout__tab\">Person</a>\n" +
-"            <a href = \"album\" class = \"mdl-layout__tab\">Album</a>\n"+ 
-"            <a href = \"labels\" class = \"mdl-layout__tab\">Labels</a>\n"+ 
+"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Album</a>\n"+
 "            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
 "            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
 "            <a href = \"music-director\" class = \"mdl-layout__tab\">Music Director</a>\n"+ 
@@ -84,16 +82,13 @@ public class CityServlet extends HttpServlet {
 "    </header>\n" +
 "\n" +
 "    <main class = \"mdl-layout__content\">\n" +
-"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-1\">\n" +
+"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
 "            <div class = \"page-content\">");
-            ArrayList<City> cities = AddressHandler.getCities(new DataConnection().getConnection());
+            ArrayList<MusicDirector> musicdirectors = PersonHandler.getMusicDirectors(new DataConnection().getConnection());
             out.println("<center><table border=\"1\">"
-                    + "<tr><td>City</td><td>State</td><td>Country</td></tr>");
-            for (City city: cities) {
-                String c = city.city;
-                String s = city.state;
-                String co = city.country;
-                out.println("<tr>" + "<td>" + c + "</td>" + "<td>" + s + "</td>" + "<td>" + co + "</td>" + "</td>");
+                    + "<tr><td>Person ID</td><td>Name</td><td>Company</td></tr>");
+            for (MusicDirector director: musicdirectors) {
+                out.println("<tr><td>" + "<a href=person?id=" + director.person_id + ">" + director.person_id + "</a>" + "</td><td>" + director.name + "</td><td>" + director.company + "</td></tr>");   
             }
             out.println("</table></center>");
             out.println("</div>\n" +

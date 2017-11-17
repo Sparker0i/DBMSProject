@@ -69,8 +69,7 @@ public class AlbumServlet extends HttpServlet {
 "\n" +
 "        <!-- Tabs -->\n" +
 "        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Album</a>\n"+ 
-"            <a href = \"labels\" class = \"mdl-layout__tab\">Labels</a>\n"+ 
+"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Album</a>\n"+
 "            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
 "            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
 "            <a href = \"music-director\" class = \"mdl-layout__tab\">Music Director</a>\n"+ 

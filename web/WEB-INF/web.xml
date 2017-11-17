@@ -9,6 +9,10 @@
         <servlet-class>servlet.ZipServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>music-director</servlet-name>
+        <servlet-class>servlet.MusicDirectorServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>album</servlet-name>
         <servlet-class>servlet.AlbumServlet</servlet-class>
     </servlet>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>zip</servlet-name>
         <url-pattern>/zip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>music-director</servlet-name>
+        <url-pattern>/music-director</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>album</servlet-name>

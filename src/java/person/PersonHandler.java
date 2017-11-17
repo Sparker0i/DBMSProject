@@ -31,10 +31,10 @@ public class PersonHandler {
     
     public static ArrayList<MusicDirector> getMusicDirectors(Connection conn) {
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Music_Director");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Music_Director INNER JOIN Person ON Person.Person_Id = Music_Director.person_id;");
             ArrayList<MusicDirector> musicdirectors = new ArrayList<>();
             while (rs.next()) {
-                musicdirectors.add(new MusicDirector(rs.getInt("person_id") , rs.getString("company")));
+                musicdirectors.add(new MusicDirector(rs.getInt("person_id") , rs.getString("name") , rs.getString("company")));
             }
             return musicdirectors;
         }
