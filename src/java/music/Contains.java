@@ -10,11 +10,11 @@ package music;
  * @author Spark
  */
 public class Contains {
-    public int album_id;
-    public int song_id;
+    public String album_title;
+    public String song_title;
     
-    public Contains (int album_id , int song_id) {
-        this.album_id = album_id;
-        this.song_id = song_id;
+    public Contains (String album_id , String song_id) {
+        this.album_title = album_id;
+        this.song_title = song_id;
     }
 }

@@ -9,19 +9,21 @@ import connection.DataConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import music.*;
+import person.PersonHandler;
+import person.Singer;
 
 /**
  *
  * @author Spark
  */
-public class AlbumServlet extends HttpServlet {
+@WebServlet(name = "singer", urlPatterns = {"/singer"})
+public class SingerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,27 +71,25 @@ public class AlbumServlet extends HttpServlet {
 "\n" +
 "        <!-- Tabs -->\n" +
 "        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Album</a>\n"+ 
-"            <a href = \"labels\" class = \"mdl-layout__tab\">Labels</a>\n"+ 
+"            <a href = \"album\" class = \"mdl-layout__tab \">Album</a>\n"+ 
+"            <a href = \"label\" class = \"mdl-layout__tab\">Labels</a>\n"+ 
 "            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
-"            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
+"            <a href = \"#scroll-tab-7\" class = \"mdl-layout__tab is-active\">Singer</a>\n"+ 
 "            <a href = \"music-director\" class = \"mdl-layout__tab\">Music Director</a>\n"+ 
 "            <a href = \"author\" class = \"mdl-layout__tab\">Author</a>\n"+
 "        </div>\n" +
 "    </header>\n" +
 "\n" +
 "    <main class = \"mdl-layout__content\">\n" +
-"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
+"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-7\">\n" +
 "            <div class = \"page-content\">");
-            ArrayList<Album> albums = MusicHandler.getAlbums(new DataConnection().getConnection());
+            ArrayList<Singer> singers = PersonHandler.getSingers(new DataConnection().getConnection());
             out.println("<center><table border=\"1\">"
-                    + "<tr><td>Album ID</td><td>Title</td><td>Copyright Date</td><td>Format</td></tr>");
-            for (Album album: albums) {
-                int id = album.album_id;
-                String t = album.title;
-                Date d = album.date;
-                String f = album.format;
-                out.println("<tr><td>" + "<a href=contains?id=" + id + ">" + id + "</a>" + "</td><td>" + t +"</td><td>" + d + "</td><td>" + f + "</td></tr>");   
+                    + "<tr><td>Person ID</td><td>Contracted Company</td></tr>");
+            for (Singer singer: singers) {
+                int id = singer.person_id;
+                String c = singer.contracted;
+                out.println("<tr><td>" + id + "</td><td>" + c + "</td></tr>");   
             }
             out.println("</table></center>");
             out.println("</div>\n" +

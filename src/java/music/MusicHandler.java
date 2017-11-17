@@ -43,12 +43,12 @@ public class MusicHandler {
         return null;
     }
     
-    public static ArrayList<Contains> getContains(Connection conn) {
+    public static ArrayList<Contains> getContains(Connection conn , String i) {
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Contains");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Album.TITLE AS Album_Title, Song.TITLE AS Song_Title FROM CONTAINS INNER JOIN Album ON Album.Album_Id = Contains.Album_Id INNER JOIN Song ON Song.Song_Id = Contains.Song_Id WHERE Album.Album_Id = " + i);
             ArrayList<Contains> contains = new ArrayList<>();
             while (rs.next()) {
-                contains.add(new Contains(rs.getInt("album_id") , rs.getInt("song_id")));
+                contains.add(new Contains(rs.getString("album_title") , rs.getString("song_title")));
             }
             return contains;
         }

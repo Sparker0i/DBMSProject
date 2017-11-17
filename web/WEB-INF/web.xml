@@ -12,6 +12,14 @@
         <servlet-name>album</servlet-name>
         <servlet-class>servlet.AlbumServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>song</servlet-name>
+        <servlet-class>servlet.SongServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>contains</servlet-name>
+        <servlet-class>servlet.ContainsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>city</servlet-name>
         <url-pattern>/city</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>album</servlet-name>
         <url-pattern>/album</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>song</servlet-name>
+        <url-pattern>/song</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contains</servlet-name>
+        <url-pattern>/contains</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
