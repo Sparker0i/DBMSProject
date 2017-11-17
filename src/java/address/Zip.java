@@ -3,14 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package address;
 
 /**
  *
  * @author Spark
  */
-public class City {
+public class Zip {
+    public int zipcode;
+    public String area;
     public String city;
-    public String state;
-    public String country;
+    
+    public Zip(int zipcode, String area , String city) {
+        this.zipcode = zipcode;
+        this.area = area;
+        this.city = city;
+    }
 }

@@ -3,13 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package music;
 
 /**
  *
  * @author Spark
  */
-public class Contains {
-    public int album_id;
+public class Sings {
+    public int singer_id;
     public int song_id;
+    
+    public Sings(int singer_id , int song_id) {
+        this.singer_id = singer_id;
+        this.song_id = song_id;
+    }
 }

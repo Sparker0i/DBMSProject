@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package music;
 
 import java.util.Date;
 
@@ -16,4 +16,11 @@ public class Album {
     public String title;
     public Date date;
     public String format;
+    
+    public Album(int album_id, String title, Date date, String format) {
+        this.album_id = album_id;
+        this.title = title;
+        this.date = date;
+        this.format = format;
+    }
 }

@@ -3,13 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package person;
 
 /**
  *
  * @author Spark
  */
-public class Sings {
-    public int singer_id;
-    public int song_id;
+public class Author {
+    public int person_id;
+    public String name;
+    
+    public Author(int person_id , String name) {
+        this.name = name;
+        this.person_id = person_id;
+    }
 }

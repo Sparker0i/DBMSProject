@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package person;
 
 /**
  *
@@ -12,4 +12,9 @@ package utils;
 public class MusicDirector {
     public int person_id;
     public String company;
+    
+    public MusicDirector(int person_id , String company) {
+        this.person_id = person_id;
+        this.company = company;
+    }
 }

@@ -30,6 +30,10 @@ public class DataConnection	{
             ex.printStackTrace();
         }
     }
+    
+    public Connection getConnection() {
+        return conn;
+    }
 
     /**
      * Method kills the open statement & connection object
