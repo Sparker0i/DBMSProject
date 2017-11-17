@@ -85,11 +85,12 @@ public class SingerServlet extends HttpServlet {
 "            <div class = \"page-content\">");
             ArrayList<Singer> singers = PersonHandler.getSingers(new DataConnection().getConnection());
             out.println("<center><table border=\"1\">"
-                    + "<tr><td>Person ID</td><td>Contracted Company</td></tr>");
+                    + "<tr><td>Person ID</td><td>Name</td><td>Contracted Company</td></tr>");
             for (Singer singer: singers) {
                 int id = singer.person_id;
+                String name = singer.name;
                 String c = singer.contracted;
-                out.println("<tr><td>" + id + "</td><td>" + c + "</td></tr>");   
+                out.println("<tr><td>" + "<a href=person?id=" + id + ">" + id + "</a></td><td>" + name + "</td><td>" + c + "</td></tr>");   
             }
             out.println("</table></center>");
             out.println("</div>\n" +

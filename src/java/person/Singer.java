@@ -12,9 +12,11 @@ package person;
 public class Singer {
     public int person_id;
     public String contracted;
+    public String name;
     
-    public Singer(int person_id , String contracted) {
+    public Singer(int person_id , String name , String contracted) {
         this.person_id = person_id;
+        this.name = name;
         this.contracted = contracted;
     }
 }

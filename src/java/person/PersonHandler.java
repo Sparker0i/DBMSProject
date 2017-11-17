@@ -46,10 +46,10 @@ public class PersonHandler {
     
     public static ArrayList<Singer> getSingers(Connection conn) {
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Singer NATURAL JOIN ");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * , Person.NAME FROM Singer INNER JOIN Person ON Person.Person_Id = Singer.Person_Id; ");
             ArrayList<Singer> singers = new ArrayList<>();
             while (rs.next()) {
-                singers.add(new Singer(rs.getInt("person_id") , rs.getString("contracted")));
+                singers.add(new Singer(rs.getInt("person_id") , rs.getString("name") , rs.getString("contracted")));
             }
             return singers;
         }
