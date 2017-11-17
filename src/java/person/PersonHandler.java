@@ -59,6 +59,19 @@ public class PersonHandler {
         return null;
     }
     
+    public static NewSinger getSinger(Connection conn , String id) {
+        try {
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Person NATURAL JOIN Zip NATURAL JOIN City WHERE Person_Id = " + id);
+            while (rs.next()) {
+                return new NewSinger(rs.getString("city") , rs.getString("area") , rs.getString("name") , rs.getString("house_name") , rs.getString("address") , rs.getString("state") , rs.getString("country") , rs.getInt("zipcode") , rs.getInt("person_id"));
+            }
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
     public static ArrayList<Person> getPersons(Connection conn) {
         try {
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Person");

@@ -5,17 +5,17 @@
  */
 package servlet;
 
+import connection.DataConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.util.*;
+import music.*;
 import person.*;
-import connection.*;
 
 /**
  *
@@ -38,6 +38,7 @@ public class PersonServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            NewSinger singer = PersonHandler.getSinger(new DataConnection().getConnection(), request.getParameter("id"));
             out.println("<html lang=\"en\">\n" +
 "<head>\n" +
 "    <meta charset=\"UTF-8\">\n" +
@@ -70,10 +71,7 @@ public class PersonServlet extends HttpServlet {
 "\n" +
 "        <!-- Tabs -->\n" +
 "        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"city\" class = \"mdl-layout__tab\">City</a>\n" +
-"            <a href = \"zip\" class = \"mdl-layout__tab\">Zipcode</a>\n" +
-"            <a href = \"#scroll-tab-3\" class = \"mdl-layout__tab is-active\">Person</a>\n" +
-"            <a href = \"album\" class = \"mdl-layout__tab\">Album</a>\n"+ 
+"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Album</a>\n"+ 
 "            <a href = \"labels\" class = \"mdl-layout__tab\">Labels</a>\n"+ 
 "            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
 "            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
@@ -83,20 +81,11 @@ public class PersonServlet extends HttpServlet {
 "    </header>\n" +
 "\n" +
 "    <main class = \"mdl-layout__content\">\n" +
-"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-3\">\n" +
+"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
 "            <div class = \"page-content\">");
-            ArrayList<Person> persons = PersonHandler.getPersons(new DataConnection().getConnection());
             out.println("<center><table border=\"1\">"
-                    + "<tr><td>Person ID</td><td>Name</td><td>House Name</td><td>Address</td><td>Zipcode</td><td>Area</td></tr>");
-            for (Person person: persons) {
-                int pid = person.person_id;
-                String name = person.name;
-                String hname = person.house_name;
-                String a = person.address;
-                int z = person.zipcode;
-                String ar = person.area;
-                out.println("<tr><td>" + pid + "</td><td>" + name +"</td><td>" + hname + "</td><td>" + a + "</td><td>" + z + "</td><td>" + ar + "</td></tr>");   
-            }
+                    + "<tr><td>ID</td><td>Name</td><td>House Name</td><td>Address</td><td>Area</td><td>City</td><td>Zipcode</td><td>State</td><td>Country</td></tr>");
+            out.println("<tr><td>" + singer.person_id  + "</td><td>" + singer.name  + "</td><td>" + singer.house_name + "</td><td>" + singer.address  + "</td><td>" + singer.area  + "</td><td>" + singer.city  + "</td><td>" + singer.zip  + "</td><td>" + singer.state  + "</td><td>" + singer.country  + "</td></tr>");
             out.println("</table></center>");
             out.println("</div>\n" +
 "        </section>\n" +
