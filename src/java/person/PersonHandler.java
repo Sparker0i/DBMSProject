@@ -61,7 +61,7 @@ public class PersonHandler {
     
     public static ArrayList<Person> getPersons(Connection conn) {
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Singer");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Person");
             ArrayList<Person> persons = new ArrayList<>();
             while (rs.next()) {
                 persons.add(new Person(rs.getInt("person_id") , rs.getString("name") , rs.getString("house_name") , rs.getString("address") , rs.getInt("zipcode") , rs.getString("area")));

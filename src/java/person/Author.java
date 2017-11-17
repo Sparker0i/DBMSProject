@@ -11,7 +11,7 @@ package person;
  */
 public class Author {
     public int person_id;
-    public String name;
+    public String name; //company
     
     public Author(int person_id , String name) {
         this.name = name;

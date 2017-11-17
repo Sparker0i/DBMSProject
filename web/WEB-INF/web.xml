@@ -8,6 +8,10 @@
         <servlet-name>zip</servlet-name>
         <servlet-class>servlet.ZipServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>album</servlet-name>
+        <servlet-class>servlet.AlbumServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>city</servlet-name>
         <url-pattern>/city</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>zip</servlet-name>
         <url-pattern>/zip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>album</servlet-name>
+        <url-pattern>/album</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

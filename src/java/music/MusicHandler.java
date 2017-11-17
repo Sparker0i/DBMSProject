@@ -18,7 +18,7 @@ public class MusicHandler {
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Album");
             ArrayList<Album> albums = new ArrayList<>();
             while (rs.next()) {
-                albums.add(new Album(rs.getInt("album_id") , rs.getString("title") , rs.getDate("date") , rs.getString("format")));
+                albums.add(new Album(rs.getInt("album_id") , rs.getString("title") , rs.getDate("copyright_date") , rs.getString("format")));
             }
             return albums;
         }
