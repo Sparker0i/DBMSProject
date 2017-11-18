@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class PersonHandler {
     public static ArrayList<Author> getAuthors(Connection conn) {
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Author");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Author INNER JOIN Person ON Person.Person_Id = Author.person_id;");
             ArrayList<Author> authors = new ArrayList<>();
             while (rs.next()) {
-                authors.add(new Author(rs.getInt("person_id") , rs.getString("name")));
+                authors.add(new Author(rs.getInt("person_id") , rs.getString("name") , rs.getString("cname")));
             }
             return authors;
         }

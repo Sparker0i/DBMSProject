@@ -11,9 +11,11 @@ package person;
  */
 public class Author {
     public int person_id;
-    public String name; //company
+    public String cname; //company
+    public String name;
     
-    public Author(int person_id , String name) {
+    public Author(int person_id , String name, String cname) {
+        this.cname = cname;
         this.name = name;
         this.person_id = person_id;
     }

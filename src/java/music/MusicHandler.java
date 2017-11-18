@@ -73,6 +73,18 @@ public class MusicHandler {
         return null;
     }
     
+    public static void addAlbum(Connection conn , Album album) {
+        try {
+            String query = "INSERT INTO ALBUM(album_id , title, copyright_date, format) VALUES" +
+                "(" + album.album_id + ",\'" + album.title + "\',\'" + album.date + "\',\'" + album.format + "\');";
+            System.out.println(query);
+            conn.createStatement().executeUpdate(query);
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public static ArrayList<Composes> getComposes(Connection conn) {
         try {
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Composes");

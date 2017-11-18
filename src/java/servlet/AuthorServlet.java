@@ -9,23 +9,21 @@ import connection.DataConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import music.Album;
+import music.Contains;
 import music.MusicHandler;
-import person.MusicDirector;
+import music.Song;
+import person.Author;
 import person.PersonHandler;
 
 /**
  *
  * @author Spark
  */
-@WebServlet(name = "music-director", urlPatterns = {"/music-director-servlet"})
-public class MusicDirectorServlet extends HttpServlet {
+public class AuthorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -73,22 +71,22 @@ public class MusicDirectorServlet extends HttpServlet {
 "\n" +
 "        <!-- Tabs -->\n" +
 "        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"album\" class = \"mdl-layout__tab\">Album</a>\n"+
+"            <a href = \"album\" class = \"mdl-layout__tab \">Album</a>\n"+
 "            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
 "            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
-"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Music Director</a>\n"+ 
-"            <a href = \"author\" class = \"mdl-layout__tab\">Author</a>\n"+
+"            <a href = \"music-director\" class = \"mdl-layout__tab\">Music Director</a>\n"+ 
+"            <a href = \"#scroll-tab-6\" class = \"mdl-layout__tab is-active\">Author</a>\n"+
 "        </div>\n" +
 "    </header>\n" +
 "\n" +
 "    <main class = \"mdl-layout__content\">\n" +
-"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
+"        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-6\">\n" +
 "            <div class = \"page-content\">");
-            ArrayList<MusicDirector> musicdirectors = PersonHandler.getMusicDirectors(new DataConnection().getConnection());
+            ArrayList<Author> authors = PersonHandler.getAuthors(new DataConnection().getConnection());
             out.println("<center><table border=\"1\">"
-                    + "<tr><td>Person ID</td><td>Name</td><td>Company</td></tr>");
-            for (MusicDirector director: musicdirectors) {
-                out.println("<tr><td>" + "<a href=person?id=" + director.person_id + ">" + director.person_id + "</a>" + "</td><td>" + director.name + "</td><td>" + director.company + "</td></tr>");   
+                    + "<tr><td>Author ID</td><td>Author Name</td><td>Company</td></tr>");
+            for (Author author: authors) {
+                out.println("<tr><td>" + "<a href=person?id=" + author.person_id + ">" + author.person_id + "</a>" + "</td><td>" + author.name +"</td><td>" + author.cname + "</td></tr>");   
             }
             out.println("</table></center>");
             out.println("</div>\n" +

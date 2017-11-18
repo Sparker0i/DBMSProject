@@ -79,9 +79,9 @@ public class AlbumServlet extends HttpServlet {
 "\n" +
 "    <main class = \"mdl-layout__content\">\n" +
 "        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
-"            <div class = \"page-content\">");
+"            <div class = \"page-content\"><center>");
             ArrayList<Album> albums = MusicHandler.getAlbums(new DataConnection().getConnection());
-            out.println("<center><table border=\"1\">"
+            out.println("<table border=\"1\">"
                     + "<tr><td>Album ID</td><td>Title</td><td>Copyright Date</td><td>Format</td></tr>");
             for (Album album: albums) {
                 int id = album.album_id;
@@ -90,8 +90,11 @@ public class AlbumServlet extends HttpServlet {
                 String f = album.format;
                 out.println("<tr><td>" + "<a href=contains?id=" + id + ">" + id + "</a>" + "</td><td>" + t +"</td><td>" + d + "</td><td>" + f + "</td></tr>");   
             }
-            out.println("</table></center>");
-            out.println("</div>\n" +
+            out.println("</table>");
+            out.println("<a href=\"addalbum\"><button class=\"mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored\" style=\"position:fixed; right:8px;\">\n" +
+"  <i class=\"material-icons\">add</i>\n" +
+"</button></a>");
+            out.println("</center></div>\n"+ 
 "        </section>\n" +
 "    </main>\n" +
 "</div>\n" +

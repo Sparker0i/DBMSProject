@@ -8,8 +8,11 @@ package servlet;
 import connection.DataConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import music.Album;
 import music.MusicHandler;
-import person.MusicDirector;
-import person.PersonHandler;
 
 /**
  *
  * @author Spark
  */
-@WebServlet(name = "music-director", urlPatterns = {"/music-director-servlet"})
-public class MusicDirectorServlet extends HttpServlet {
+public class AddAlbumServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +41,8 @@ public class MusicDirectorServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<html lang=\"en\">\n" +
+            out.println(
+"<html lang=\"en\">\n" +
 "<head>\n" +
 "    <meta charset=\"UTF-8\">\n" +
 "    <title>Welcome to AAVA Music Studios</title>\n" +
@@ -69,29 +70,29 @@ public class MusicDirectorServlet extends HttpServlet {
 "        <div class = \"mdl-layout__header-row\">\n" +
 "            <!-- Title -->\n" +
 "            <span class = \"mdl-layout-title\">Welcome to AAVA Music Studios</span>\n" +
-"        </div>\n" +
-"\n" +
-"        <!-- Tabs -->\n" +
-"        <div class = \"mdl-layout__tab-bar mdl-js-ripple-effect\">\n" +
-"            <a href = \"album\" class = \"mdl-layout__tab\">Album</a>\n"+
-"            <a href = \"song\" class = \"mdl-layout__tab\">Song</a>\n"+ 
-"            <a href = \"singer\" class = \"mdl-layout__tab\">Singer</a>\n"+ 
-"            <a href = \"#scroll-tab-4\" class = \"mdl-layout__tab is-active\">Music Director</a>\n"+ 
-"            <a href = \"author\" class = \"mdl-layout__tab\">Author</a>\n"+
-"        </div>\n" +
+"        </div>"+
 "    </header>\n" +
 "\n" +
 "    <main class = \"mdl-layout__content\">\n" +
 "        <section class = \"mdl-layout__tab-panel is-active\" id = \"scroll-tab-4\">\n" +
 "            <div class = \"page-content\">");
-            ArrayList<MusicDirector> musicdirectors = PersonHandler.getMusicDirectors(new DataConnection().getConnection());
-            out.println("<center><table border=\"1\">"
-                    + "<tr><td>Person ID</td><td>Name</td><td>Company</td></tr>");
-            for (MusicDirector director: musicdirectors) {
-                out.println("<tr><td>" + "<a href=person?id=" + director.person_id + ">" + director.person_id + "</a>" + "</td><td>" + director.name + "</td><td>" + director.company + "</td></tr>");   
-            }
-            out.println("</table></center>");
-            out.println("</div>\n" +
+            out.println("<form action=\"addalbum.jsp\" method=\"post\">\n" +
+"Album ID:<br>\n" +
+"<input type=\"text\" name=\"album_id\">\n" +
+"<br>\n" +
+"Title:<br>\n" +
+"<input type=\"text\" name=\"title\">\n" +
+"<br>\n" +
+"Copyright Date:<br>\n" +
+"<input type=\"text\" name=\"copyright_date\">\n" +
+"<br>\n" +
+"Format:<br>\n" +
+"<input type=\"text\" name=\"format\">\n" +
+"<br>\n" +
+"<br>\n" +
+"<input type=\"submit\">\n" +
+"</form> " + 
+"</div>\n" +
 "        </section>\n" +
 "    </main>\n" +
 "</div>\n" +
